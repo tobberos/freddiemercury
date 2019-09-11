@@ -1,0 +1,364 @@
+---
+---
+@import url('https://fonts.googleapis.com/css?family=Crimson+Pro|Dancing+Script&display=swap'); 
+$background: #444;
+$whiteColour : #fff;
+$fontFamily: 'Crimson Pro', serif;
+$fontQuote: 'Dancing Script', cursive;
+$goldColor: #FFD700;
+$wrapperColor: #12110A;
+$overlay: rgba(2, 2, 2, 0.85);
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing: border-box;
+}
+
+// GENERAL CSS
+body{
+background-color:$background;
+color:$whiteColour;
+font-family: $fontFamily;
+}
+a{
+text-decoration: none;
+color:$whiteColour;
+}
+
+
+ //MENU 
+.menu{
+text-align: center;
+font-size: 1.5em;
+}
+.menu li{
+display:inline-block;
+margin:0 auto;
+padding:40px;
+color:$whiteColour;
+}
+
+//MOBILE MENU
+
+.menu-wrap{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:1;
+}
+
+.menu-wrap .toggler{
+ position: absolute;
+ top:0;
+ left:0;
+ z-index:2;
+ cursor: pointer;
+ width:50px;
+ height:50px;
+ opacity: 0;
+}
+
+.menu-wrap .hamburger{
+position: absolute;
+top:0;
+left:0;
+z-index:1;
+width:60px;
+height:60px;
+padding:1rem;
+display:flex;
+align-items: center;
+justify-content: center;
+display: none;
+}
+
+.menu-wrap .hamburger > div{
+  position: relative;
+  width:100%;
+  height:2px;
+  background: $whiteColour;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .hamburger >div:before,
+.menu-wrap .hamburger >div:after{
+  content:'';
+  position: absolute;
+  z-index:1;
+  top:-10px;
+  width:100%;
+  height: 2px;
+  background: inherit;
+}
+.menu-wrap .hamburger >div:after{
+  top:10px;
+}
+
+.menu-wrap .toggler:checked + .hamburger>div{
+transform:rotate(135deg)
+}
+
+.menu-wrap .toggler:checked + .hamburger>div:before,
+.menu-wrap .toggler:checked + .hamburger>div:after{
+  top:0;
+  transform: rotate(90deg)
+}
+
+
+.menu-wrap .toggler:checked ~ .mobileMenu{
+  visibility: visible;
+}
+.menu-wrap .toggler:checked ~ .mobileMenu >div{
+ transform: scale(1);
+}
+.menu-wrap .toggler:checked ~ .mobileMenu >div>div{
+  opacity: 1;
+}
+
+.menu-wrap .mobileMenu{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .mobileMenu > div{
+  background:$overlay;
+  width:200vw;
+  height: 200vh;
+  display:flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .mobileMenu >div > div{
+ text-align: center;
+ max-width: 90vw;
+ max-height: 100vh;
+ opacity:0;
+ transition: opacity 0.4s ease;
+}
+.menu-wrap .mobileMenu >div > div> ul>li{
+  list-style: none;
+  color:$whiteColour;
+  font-size:1.5em;
+  padding:1em;
+}
+.menu-wrap .mobileMenu >div > div> ul>li>a{
+  color:$whiteColour;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+// CLASSES
+
+.responsive{
+width:50%;
+height: auto;
+}
+
+.float-left{
+    float:left;
+}
+
+.clearfix {
+    margin-bottom: 100px;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+
+
+
+//HOME PAGE
+.container{
+position: relative;
+width:100vw;
+min-height:100vh;
+}
+
+.container > h1{
+    text-align: center;
+    color:$goldColor;
+    margin:30px;
+    font-size:2em;
+}
+
+.container::after {
+    content: "";
+    background: url('/images/freddimercuryhome.jpg') fixed;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+  .center-text{
+    text-align: center;
+    margin-top:33vh;
+  }
+
+  
+
+  .quoteText{
+    font-family: $fontQuote;
+    font-size:40px;
+    color:$goldColor;
+  }
+
+  .navLink::after{
+    content: '';
+    display: block;
+    width:0;
+    height:2px;
+    background:$whiteColour;
+    transition: width .3s;
+  }
+  .navLink:hover{
+    color:$goldColor;
+  }
+  .navLink:hover::after{
+      width:100%;
+      transition: width .3s;
+  }
+
+
+  // MUSIC CSS
+  .iFrame{
+    width: 100%;
+    display:flex;
+    // margin:0 auto;
+  }
+
+  .iFrame > p{
+    align-self: center;
+    margin:10px;
+    font-size:1.3em;
+  }
+
+  .wrapper{
+   width: 60%;
+   border:2px solid $goldColor;
+   margin:0 auto;
+   background-color: $wrapperColor;
+   padding:25px;
+   overflow: hidden;
+  }
+
+  .wrapper > h2{
+    color:$goldColor;
+  }
+  .wrapper >p {
+    font-style: italic;
+  }
+
+  .wrapper >img {
+      margin-right: 10px;
+  }
+
+
+  //FORM
+
+  .form{
+    text-align: center;
+    margin:0 auto;
+    width:50%;
+  }
+  
+
+  #submit-button{
+    border:1px solid $wrapperColor;
+    background-color:$wrapperColor;
+    color:$goldColor;
+    padding:10px;
+    width:70%;
+    border-radius: 25px;
+    margin:20px;
+  }
+  #submit-button:hover{
+    cursor: pointer;
+    background-color: $goldColor;
+    color:$wrapperColor;
+  }
+
+  textarea{
+      resize: none;
+      width:70%;
+  }
+
+  label{
+  color:$goldColor;
+  font-size:1.5em;
+  margin:20px;
+  }
+
+
+  //BIOGRAPHY
+
+.biography-text{
+  text-align: start;
+  margin-top:20px;
+//   font-size:20px;
+}
+
+#text-box{
+width:47%;
+float:left;
+}
+.iframe-container {
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    border:2px solid $whiteColour;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+  // MEDIA QUERIES
+
+  @media screen and (max-width: 1217px) {
+    .iFrame {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 743px) {
+    .menu li a {
+      display: none;
+    }
+    .responsive{
+     width:100%;
+    }
+    #text-box{
+    width:100%;
+    }
+    .menu-wrap .hamburger{
+      display:block;
+    }
+  }
